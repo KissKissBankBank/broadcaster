@@ -1,9 +1,5 @@
 # Broadcaster
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/broadcaster`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,11 +18,46 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+On a rails application, execute `rake db:migrate` to create the broadcaster tables.
+
+You can then plug the `subscription` model or the `campaign` model to any publisher or subscriber.
+
+A way to enjoy the functionalities of the library and preventing any leaks into your business logic is by creating a scoped concern:
+
+```rb
+module Publisher
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :publication_campaigns, class_name: 'Broadcaster::Campaign', as: :publisher
+  end
+end
+
+module Subscriber
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :subscriptions, class_name: 'Broadcaster::Subscription', as: :subscriber
+  end
+end
+```
+
+Then include the module in your model, and you can manage and broadcast your campaigns !
+
+```rb
+class YourModel
+  include Publisher
+end
+
+your_model = YourModel.find(...)
+
+your_model.publication_campaigns
+# => [#<Broadcaster::Campaign ...>, ...]
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exect rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
