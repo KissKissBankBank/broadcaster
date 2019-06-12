@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount SubscriptionsBroker::Engine => '/subscriptions_broker'
+  mount Broadcaster::Engine => '/broadcaster'
 end

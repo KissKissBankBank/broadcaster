@@ -1,15 +1,15 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'subscriptions_broker/version'
+require 'broadcaster/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'subscriptions_broker'
-  spec.version       = SubscriptionsBroker::VERSION
+  spec.name          = 'broadcaster'
+  spec.version       = Broadcaster::VERSION
   spec.authors       = ['William Pollet']
   spec.email         = ['polletwilliam@gmail.com']
 
   spec.summary       = 'manage your publisher / subscriber relationshups'
-  spec.homepage      = 'https://www.github.com/kisskissbankbank/subscriptions_broker'
+  spec.homepage      = 'https://www.github.com/kisskissbankbank/broadcaster'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org.
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata['allowed_push_host'] = 'http://mygemserver.com'
 
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://www.github.com/kisskissbankbank/subscriptions_broker'
-    spec.metadata['changelog_uri'] = 'https://www.github.com/kisskissbankbank/subscriptions_broker/CHANGELOG.md'
+    spec.metadata['source_code_uri'] = 'https://www.github.com/kisskissbankbank/broadcaster'
+    spec.metadata['changelog_uri'] = 'https://www.github.com/kisskissbankbank/broadcaster/CHANGELOG.md'
   else
     raise 'RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes.'

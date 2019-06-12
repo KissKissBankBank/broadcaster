@@ -3,9 +3,6 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :email, null: false, uniqueness: true
 
-      t.string :iban
-      t.string :bic
-
       t.timestamps
     end
 

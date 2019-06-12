@@ -1,2 +1,2 @@
-SubscriptionsBroker::Engine.routes.draw do
+Broadcaster::Engine.routes.draw do
 end

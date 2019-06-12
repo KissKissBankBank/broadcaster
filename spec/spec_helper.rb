@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'subscriptions_broker'
+require 'broadcaster'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

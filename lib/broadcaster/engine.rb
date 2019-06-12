@@ -1,9 +1,9 @@
 require 'rails'
-require 'subscriptions_broker/configuration'
+require 'broadcaster/configuration'
 
-module SubscriptionsBroker
+module Broadcaster
   class Engine < ::Rails::Engine
-    isolate_namespace SubscriptionsBroker
+    isolate_namespace Broadcaster
 
     # https://content.pivotal.io/blog/leave-your-migrations-in-your-rails-engines
     initializer :append_migrations do |app|

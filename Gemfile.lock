@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    subscriptions_broker (0.1.0)
+    broadcaster (0.1.0)
       rails (>= 3.2, < 5.1)
 
 GEM
@@ -210,6 +210,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  broadcaster!
   factory_bot_rails (~> 5.0.2)
   fashion_police (~> 2.0.1)
   pg
@@ -220,7 +221,6 @@ DEPENDENCIES
   rspec-rails
   rubocop (~> 0.60)
   simplecov (~> 0.16.1)
-  subscriptions_broker!
   test-unit
 
 BUNDLED WITH

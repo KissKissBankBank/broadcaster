@@ -3,7 +3,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
-require 'subscriptions_broker'
+require 'broadcaster'
 
 module Dummy
   class Application < Rails::Application

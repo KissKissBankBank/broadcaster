@@ -1,19 +1,19 @@
 default: &default
-  adapter:  mysql2
-  pool:     5
+  adapter:  postgresql
+  pool: 5
   username:
   password:
-  host:     127.0.0.1
-  port:     3306
+  host: 127.0.0.1
+  port: 5432
 
 development:
   <<: *default
-  database: subscriptions_broker_development
+  database: broadcaster_development
 
 test:
   <<: *default
-  database: subscriptions_broker_test
+  database: broadcaster_test
 
 production:
   <<: *default
-  database: subscriptions_broker_production
+  database: broadcaster_production

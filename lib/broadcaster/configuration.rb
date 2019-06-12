@@ -1,6 +1,6 @@
 require 'yaml'
 # Configuration variables and defaults
-module SubscriptionsBroker
+module Broadcaster
   class << self
     attr_writer :configuration
 
