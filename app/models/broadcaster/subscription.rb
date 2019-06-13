@@ -1,6 +1,6 @@
 module Broadcaster
   class Subscription < ActiveRecord::Base
-    include Tokenable
+    include Broadcaster::Tokenable
 
     belongs_to :subscriber, polymorphic: true
     belongs_to :campaign,
