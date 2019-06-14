@@ -46,45 +46,45 @@ jobs:
           paths:
             - vendor/bundle
 
-test_rails:
-  <<: *defaults
-  docker:
-    - image: circleci/ruby:2.3
-      environment:
-        RAILS_ENV: test
-        RACK_ENV: test
-        BUNDLE_PATH: vendor/bundle
-        PGHOST: 127.0.0.1
-        PGUSER: root
-        DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
-    - image: circleci/postgres:9.6
-      environment:
-        POSTGRES_USER: root
-        POSTGRES_DB: circle-test_test
-  steps:
-    - checkout
-    - run: sudo apt-get update
-    - run: sudo apt install postgresql-client
-    - attach_workspace:
-        at: .
-    - run:
-        name: Wait for DB
-        command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
-    - run:
-        name: DB Setup
-        command: bundle exec rake app:db:create app:db:migrate
-    - run: mkdir -p ~/rspec
-    - run:
-        name: Rspec
-        command: bundle exec rspec --format progress --format RspecJunitFormatter --out ~/rspec/rspec.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-  pronto:
+  test_rails:
     <<: *defaults
+    docker:
+      - image: circleci/ruby:2.3
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: root
+          DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
     steps:
       - checkout
+      - run: sudo apt-get update
+      - run: sudo apt install postgresql-client
       - attach_workspace:
           at: .
       - run:
-          command: bin/github-pr-review
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run:
+          name: DB Setup
+          command: bundle exec rake app:db:create app:db:migrate
+      - run: mkdir -p ~/rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec --format progress --format RspecJunitFormatter --out ~/rspec/rspec.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
+    pronto:
+      <<: *defaults
+      steps:
+        - checkout
+        - attach_workspace:
+            at: .
+        - run:
+            command: bin/github-pr-review
 
 workflows:
   version: 2.1
