@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+if [ "$CIRCLE_NODE_INDEX" = "0" ] && [ "$CIRCLE_BRANCH" != "master" ]; then
+  export PRONTO_PULL_REQUEST_ID=${CI_PULL_REQUEST//*pull\//}
+
+  git fetch origin master:refs/remotes/origin/master
+  bundle exec pronto run -f github_pr_review -c origin/master --exit-code
+fi
