@@ -1,5 +1,5 @@
 require 'rails'
-require "active_support/core_ext"
+require 'active_support/core_ext'
 require 'broadcaster/configuration'
 require 'broadcaster/acts_as_subscriber'
 require 'broadcaster/acts_as_publisher'
