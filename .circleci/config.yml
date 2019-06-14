@@ -1,0 +1,87 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - &default_image
+        image: circleci/ruby:2.3-node-browsers
+        environment: &default_environment
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_DISABLE_VERSION_CHECK: 'true'
+          BUNDLE_DEPLOYMENT: 'true'
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          RACK_ENV: test
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - broadcaster-bundle-{{ checksum "Gemfile.lock" }}
+            - broadcaster-bundle-
+      - run: sudo apt-get update
+      - run: sudo apt install -y cmake libssh-dev
+      - run: sudo apt install postgresql-client
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - save_cache:
+          key: broadcaster-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+            - ~/.bundle
+      - persist_to_workspace:
+          root: .
+          paths:
+            - vendor/bundle
+test_rails:
+  <<: *defaults
+  docker:
+    - image: circleci/ruby:2.3
+      environment:
+        RAILS_ENV: test
+        RACK_ENV: test
+        BUNDLE_PATH: vendor/bundle
+        PGHOST: 127.0.0.1
+        PGUSER: root
+        DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
+    - image: circleci/postgres:9.6
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_DB: circle-test_test
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt install postgresql-client
+      - attach_workspace:
+          at: .
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run:
+          name: DB Setup
+          command: bundle exec rake app:db:create app:db:migrate
+      - run: mkdir -p ~/rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec --format progress --format RspecJunitFormatter --out ~/rspec/rspec.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
+  pronto:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          command: bin/github-pr-review
+
+workflows:
+  version: 2.1
+  test:
+    jobs:
+      - build:
+      - test_rails:
+          requires:
+            - build
+      - pronto:
+          requires:
+            - build
