@@ -45,6 +45,7 @@ jobs:
           root: .
           paths:
             - vendor/bundle
+
 test_rails:
   <<: *defaults
   docker:
