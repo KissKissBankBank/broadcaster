@@ -11,3 +11,5 @@
 .rspec_status
 
 /spec/dummy/config/database.yml
+
+.env
