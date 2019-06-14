@@ -77,14 +77,14 @@ jobs:
       - run:
           name: Rspec
           command: bundle exec rspec --format progress --format RspecJunitFormatter --out ~/rspec/rspec.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-    pronto:
-      <<: *defaults
-      steps:
-        - checkout
-        - attach_workspace:
-            at: .
-        - run:
-            command: bin/github-pr-review
+  pronto:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          command: bin/github-pr-review
 
 workflows:
   version: 2.1
