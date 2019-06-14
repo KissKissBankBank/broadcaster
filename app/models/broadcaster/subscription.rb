@@ -3,7 +3,7 @@ module Broadcaster
     include Broadcaster::Tokenable
 
     belongs_to :subscriber, polymorphic: true
-    belongs_to :campaign,
+    belongs_to :broadcaster_campaign,
                class_name: 'Broadcaster::Campaign',
                foreign_key: :broadcaster_campaign_id
 

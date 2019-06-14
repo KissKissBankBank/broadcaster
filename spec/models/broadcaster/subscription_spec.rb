@@ -12,6 +12,6 @@ RSpec.describe Broadcaster::Subscription do
   let(:subscriber) { create :user }
 
   it 'is valid' do
-    expect { subscription }.to be_valid
+    expect(subscription).to be_valid
   end
 end
