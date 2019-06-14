@@ -46,21 +46,21 @@ jobs:
           paths:
             - vendor/bundle
 
-test_rails:
-  <<: *defaults
-  docker:
-    - image: circleci/ruby:2.3
-      environment:
-        RAILS_ENV: test
-        RACK_ENV: test
-        BUNDLE_PATH: vendor/bundle
-        PGHOST: 127.0.0.1
-        PGUSER: root
-        DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
-    - image: circleci/postgres:9.6
-      environment:
-        POSTGRES_USER: root
-        POSTGRES_DB: circle-test_test
+  test_rails:
+    <<: *defaults
+    docker:
+      - image: circleci/ruby:2.3
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: root
+          DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
     steps:
       - checkout
       - run: sudo apt-get update
@@ -76,7 +76,7 @@ test_rails:
       - run: mkdir -p ~/rspec
       - run:
           name: Rspec
-          command: bundle exec rspec --format progress --format RspecJunitFormatter --out ~/rspec/rspec.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
+          command: bundle exec rspec --format progress $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
   pronto:
     <<: *defaults
     steps:
@@ -90,7 +90,7 @@ workflows:
   version: 2.1
   test:
     jobs:
-      - build:
+      - build
       - test_rails:
           requires:
             - build
