@@ -1,4 +1,10 @@
 # Broadcaster
+## Motivations and principles
+Broadcaster is an engine keeping track of your user's publications campaigns and subscriptions. Each publication campaign should belong to a publisher, and each subscription should belong to a subscriber.
+
+A subscriber will therefore have access to the publication campaigns he / she has subscribed to through its subscriptions.
+
+Any subscription is accessible via a unique `unsubscribe_token` to be deactivated (or reactivated).
 
 ## Installation
 
@@ -16,43 +22,68 @@ Or install it yourself as:
 
     $ gem install broadcaster
 
-## Usage
-
 On a rails application, execute `rake db:migrate` to create the broadcaster tables.
 
-You can then plug the `subscription` model or the `campaign` model to any publisher or subscriber.
-
-A way to enjoy the functionalities of the library and preventing any leaks into your business logic is by creating a scoped concern:
-
+Then plug `Broadcaster::Subscription` or `Broadcaster::Campaign` to any publisher or subscriber. Include the following modules:
 ```rb
-module Publisher
-  extend ActiveSupport::Concern
-
-  included do
-    has_many :publication_campaigns, class_name: 'Broadcaster::Campaign', as: :publisher
-  end
+class MyPublisher
+  include Broadcaster::Publisher
+  
+  ...
 end
-
-module Subscriber
-  extend ActiveSupport::Concern
-
-  included do
-    has_many :subscriptions, class_name: 'Broadcaster::Subscription', as: :subscriber
-  end
+```
+```rb
+class MySubscriber
+  include Broadcaster::Subscriber
+  
+  ...
 end
 ```
 
-Then include the module in your model, and you can manage and broadcast your campaigns !
-
+## Usage
+Access a publisher's `publication_campaigns`: 
 ```rb
-class YourModel
-  include Publisher
-end
+my_publisher = MyPublisher.find(...)
 
-your_model = YourModel.find(...)
-
-your_model.publication_campaigns
+my_publisher.publication_campaigns
 # => [#<Broadcaster::Campaign ...>, ...]
+```
+
+Or a subscriber's `subscriptions`: 
+```rb
+my_subscriber = MySubscriber.find(...)
+
+my_subscriber.subscriptions
+# => [#<Broadcaster::Subscription ...>, ...]
+```
+
+Access all the subscriptions of a campaign: 
+```rb
+campaign = Broadcaster::Campaign.find(...)
+
+subscriptions = campaign.subscribtions
+active_subscribtions = campaign.subscribtions.active
+```
+
+Access the campaign of a subscribtion: 
+```rb
+subscription = Broadcaster::Subscription.find(...)
+
+subscription.broadcaster_campaign
+```
+
+Deactivate a subscription: 
+```rb
+subscription = Broadcaster::Subscription.find(...)
+
+subscription.deactivate
+```
+
+Or activate a subscription: 
+```rb
+subscription = Broadcaster::Subscription.find(...)
+
+subscription.activate
 ```
 
 ## Development
