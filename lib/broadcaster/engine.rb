@@ -6,6 +6,12 @@ module Broadcaster
   class Engine < ::Rails::Engine
     isolate_namespace Broadcaster
 
+    config.before_initialize do
+      ActiveSupport.on_load :action_controller do
+        helper MyEngine::Engine.helpers
+      end
+    end
+
     # https://content.pivotal.io/blog/leave-your-migrations-in-your-rails-engines
     initializer :append_migrations do |app|
       unless app.root.to_s.match root.to_s
