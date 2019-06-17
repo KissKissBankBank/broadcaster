@@ -2,9 +2,9 @@
 ## Motivations and principles
 Broadcaster is an engine keeping track of your user's publications campaigns and subscriptions. Each publication campaign should belong to a publisher, and each subscription should belong to a subscriber.
 
-A subscriber will therefore have access to the publication campaigns he / she has subscribed to through its subscriptions.
+The subscriber will therefore have access to the publication campaigns he / she has subscribed to, through its subscriptions.
 
-Any subscription is accessible via a unique `unsubscribe_token` to be deactivated (or reactivated).
+Any subscription is accessible via a unique `unsubscribe_token`, and can be deactivated (or reactivated).
 
 ## Installation
 
