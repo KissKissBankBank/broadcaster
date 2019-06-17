@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://www.github.com/kisskissbankbank/broadcaster'
   spec.license       = 'MIT'
 
-  spec.metadata['allowed_push_host'] = 'http://mygemserver.com'
+  spec.metadata['allowed_push_host'] = 'https://gemfury.com/'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem
