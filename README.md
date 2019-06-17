@@ -28,20 +28,20 @@ Then include the following modules to plug `Broadcaster::Subscription` or `Broad
 ```rb
 class MyPublisher
   include Broadcaster::Publisher
-  
+
   ...
 end
 ```
 ```rb
 class MySubscriber
   include Broadcaster::Subscriber
-  
+
   ...
 end
 ```
 
 ## Usage
-Access a publisher's `publication_campaigns`: 
+Access a publisher's `publication_campaigns`:
 ```rb
 my_publisher = MyPublisher.find(...)
 
@@ -49,7 +49,7 @@ my_publisher.publication_campaigns
 # => [#<Broadcaster::Campaign ...>, ...]
 ```
 
-Or a subscriber's `subscriptions`: 
+Or a subscriber's `subscriptions`:
 ```rb
 my_subscriber = MySubscriber.find(...)
 
@@ -57,7 +57,7 @@ my_subscriber.subscriptions
 # => [#<Broadcaster::Subscription ...>, ...]
 ```
 
-Access the subscriptions of a campaign: 
+Access the subscriptions of a campaign:
 ```rb
 campaign = Broadcaster::Campaign.find(...)
 
@@ -65,21 +65,21 @@ subscriptions = campaign.subscriptions
 active_subscriptions = campaign.subscriptions.active
 ```
 
-Given a subscription, access its publication campaign: 
+Given a subscription, access its publication campaign:
 ```rb
 subscription = Broadcaster::Subscription.find(...)
 
 subscription.broadcaster_campaign
 ```
 
-Deactivate a subscription: 
+Deactivate a subscription:
 ```rb
 subscription = Broadcaster::Subscription.find(...)
 
 subscription.deactivate
 ```
 
-Or activate a subscription: 
+Or activate a subscription:
 ```rb
 subscription = Broadcaster::Subscription.find(...)
 
@@ -93,6 +93,8 @@ After checking out the repo, run `bundle install` to install dependencies. Creat
 To test the plugged engine, move to `cd spec/dummy` and create the user table with `bundle exec rake db:migrate`. Run `rails c` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+To ensure specs and linter validity, before opening your pull request run `safepush test lint push open`
 
 ## Contributing
 
