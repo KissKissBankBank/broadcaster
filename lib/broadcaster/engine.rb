@@ -1,8 +1,6 @@
 require 'rails'
 require 'active_support/core_ext'
 require 'broadcaster/configuration'
-require 'broadcaster/acts_as_subscriber'
-require 'broadcaster/acts_as_publisher'
 
 module Broadcaster
   class Engine < ::Rails::Engine
