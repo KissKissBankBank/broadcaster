@@ -6,7 +6,7 @@ class CreateBroadcasterSubscriptions < ActiveRecord::Migration
                    index: { name: 'index_subscriptions_on_subscriber' }
       t.references :broadcaster_campaign, index: true
       t.string :unsubscribe_token
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps
     end

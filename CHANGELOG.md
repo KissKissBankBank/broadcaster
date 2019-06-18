@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org)
 
+## [0.2.1] - 2019-06-18
+
+Improvements:
+ - Using `default: true` for subscription's `active` field
+
 ## [0.2.0] - 2019-06-18
 
 Breaking changes:
