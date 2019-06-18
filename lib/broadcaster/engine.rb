@@ -8,7 +8,7 @@ module Broadcaster
 
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
-        helper MyEngine::Engine.helpers
+        helper Broadcaster::Engine.helpers
       end
     end
 
