@@ -5,8 +5,8 @@ module Broadcaster
     end
 
     module ClassMethods
-      def acts_as_subscriber
-        has_many :subscriptions,
+      def acts_as_broadcaster_subscriber
+        has_many :broadcaster_subscriptions,
                  class_name: 'Broadcaster::Subscription',
                  as: :subscriber
       end

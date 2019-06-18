@@ -27,33 +27,33 @@ On a rails application, execute `rake db:migrate` to create the broadcaster tabl
 Then include the following modules to plug `Broadcaster::Subscription` or `Broadcaster::Campaign` to any publisher or subscriber:
 ```rb
 class MyPublisher
-  include Broadcaster::Publisher
+  acts_as_broadcaster_subscriber
 
   ...
 end
 ```
 ```rb
 class MySubscriber
-  include Broadcaster::Subscriber
+  acts_as_broadcaster_subscriber
 
   ...
 end
 ```
 
 ## Usage
-Access a publisher's `publication_campaigns`:
+Access a publisher's `broadcaster_campaigns`:
 ```rb
 my_publisher = MyPublisher.find(...)
 
-my_publisher.publication_campaigns
+my_publisher.broadcaster_campaigns
 # => [#<Broadcaster::Campaign ...>, ...]
 ```
 
-Or a subscriber's `subscriptions`:
+Or a subscriber's `broadcaster_subscriptions`:
 ```rb
 my_subscriber = MySubscriber.find(...)
 
-my_subscriber.subscriptions
+my_subscriber.broadcaster_subscriptions
 # => [#<Broadcaster::Subscription ...>, ...]
 ```
 
@@ -61,8 +61,8 @@ Access the subscriptions of a campaign:
 ```rb
 campaign = Broadcaster::Campaign.find(...)
 
-subscriptions = campaign.subscriptions
-active_subscriptions = campaign.subscriptions.active
+subscriptions = campaign.broadcaster_subscriptions
+active_subscriptions = campaign.broadcaster_subscriptions.active
 ```
 
 Given a subscription, access its publication campaign:

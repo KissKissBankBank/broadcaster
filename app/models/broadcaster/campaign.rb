@@ -1,12 +1,12 @@
 module Broadcaster
   class Campaign < ActiveRecord::Base
     belongs_to :publisher, polymorphic: true
-    has_many :subscriptions,
+    has_many :broadcaster_subscriptions,
              dependent: :destroy,
              class_name: '::Broadcaster::Subscription',
              foreign_key: :broadcaster_campaign_id
 
-    def active_subscriptions
+    def active_broadcaster_subscriptions
       subscriptions.active
     end
   end

@@ -5,8 +5,8 @@ module Broadcaster
     end
 
     module ClassMethods
-      def acts_as_publisher
-        has_many :publication_campaigns,
+      def acts_as_broadcaster_publisher
+        has_many :broadcaster_campaigns,
                  class_name: 'Broadcaster::Campaign',
                  as: :publisher
       end
