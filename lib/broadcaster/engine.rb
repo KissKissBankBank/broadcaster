@@ -1,16 +1,17 @@
 require 'rails'
 require 'active_support/core_ext'
 require 'broadcaster/configuration'
+require 'broadcaster/acts_as_subscriber'
+require 'broadcaster/acts_as_publisher'
+
+ActiveSupport.on_load :active_record do
+  ActiveRecord::Base.include Broadcaster::ActsAsPublisher
+  ActiveRecord::Base.include Broadcaster::ActsAsSubscriber
+end
 
 module Broadcaster
   class Engine < ::Rails::Engine
     isolate_namespace Broadcaster
-
-    config.before_initialize do
-      ActiveSupport.on_load :action_controller do
-        helper Broadcaster::Engine.helpers
-      end
-    end
 
     # https://content.pivotal.io/blog/leave-your-migrations-in-your-rails-engines
     initializer :append_migrations do |app|

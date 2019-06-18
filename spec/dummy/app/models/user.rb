@@ -1,5 +1,5 @@
 # A model class for the sample application.
 class User < ActiveRecord::Base
-  include Broadcaster::ActsAsSubscriber
-  include Broadcaster::ActsAsPublisher
+  acts_as_subscriber
+  acts_as_publisher
 end
