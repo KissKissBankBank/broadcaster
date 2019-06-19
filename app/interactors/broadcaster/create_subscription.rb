@@ -1,10 +1,6 @@
 module Broadcaster
   class CreateSubscription
     include Interactor
-    include Interactor::Contract
-
-    input :subscriber
-    input :broadcaster_campaign
 
     def call
       Broadcaster::Subscription.create!(

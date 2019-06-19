@@ -30,8 +30,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'interactor-rails'
 
-  spec.add_dependency 'tote_bag', '>= 1.1.3'
-
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '~> 2.0.1'
 

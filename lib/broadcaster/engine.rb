@@ -1,6 +1,5 @@
 require 'rails'
 require 'interactor'
-require 'tote_bag'
 require 'active_support/core_ext'
 require 'broadcaster/configuration'
 require 'broadcaster/acts_as_subscriber'
