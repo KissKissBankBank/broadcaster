@@ -28,6 +28,10 @@ Gem::Specification.new do |spec|
   # This is a Rails engine, so, yeah
   spec.add_dependency 'rails', '>= 3.2', '< 5.1'
 
+  spec.add_dependency 'interactor-rails'
+
+  spec.add_dependency 'tote_bag', '>= 1.1.3'
+
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '~> 2.0.1'
 
