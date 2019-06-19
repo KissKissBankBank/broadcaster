@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broadcaster (0.2.2)
+    broadcaster (0.2.3)
       rails (>= 3.2, < 5.1)
 
 GEM
