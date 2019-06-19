@@ -1,4 +1,4 @@
-class AddIndexToSubscriptions < ActiveRecord::Migration[5.0]
+class AddIndexToSubscriptions < ActiveRecord::Migration
   def change
     add_index :broadcaster_subscriptions,
               %i[subscriber_id subscriber_type broadcaster_campaign_id],

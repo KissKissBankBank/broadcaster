@@ -1,4 +1,4 @@
-class AddIndexToCampaigns < ActiveRecord::Migration[5.0]
+class AddIndexToCampaigns < ActiveRecord::Migration
   def change
     add_index :broadcaster_campaigns,
               %i[publisher_id publisher_type label],
