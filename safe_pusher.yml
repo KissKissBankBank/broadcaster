@@ -2,5 +2,6 @@ files_to_skip:
   - spec/rails_helper
   - spec/factories
   - spec/fixtures
+  - spec/dummy/db
 app_base_directory: app
 repo_url: https://github.com/KissKissBankBank/broadcaster
