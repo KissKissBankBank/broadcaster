@@ -4,7 +4,7 @@ AllCops:
   TargetRubyVersion: 2.3
   DisplayCopNames: true
   Exclude:
-    - 'spec/dummy/db/schema.rb'
+    - spec/dummy/db/schema.rb
 # Do not sort gems in Gemfile, since we are grouping them by functionality.
 Bundler/OrderedGems:
   Enabled: false
