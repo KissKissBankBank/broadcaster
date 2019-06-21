@@ -9,7 +9,7 @@ RSpec.describe Broadcaster::CreateCampaign do
     let(:publisher) { create :user }
     let(:label) { 'launch' }
 
-    it { expect(create_campaign).to be_success }
+    it { expect(create_campaign).to be_a_success }
 
     it 'creates a broadcaster_campaign' do
       expect { create_campaign }.to(
