@@ -11,7 +11,7 @@ RSpec.describe Broadcaster::CreateCampaign do
 
     it { expect(create_campaign).to be_a_success }
 
-    it 'creates a broadcaster_campaign' do
+    it 'creates a Campaign' do
       expect { create_campaign }.to(
         change { Broadcaster::Campaign.count }.by(1),
       )
