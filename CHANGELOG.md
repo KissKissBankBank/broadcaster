@@ -8,7 +8,7 @@ Features:
  - Add job to create campaign
  - Add job to create subscription
 
-Lints:
+Breaking changes:
  - Rename indexes
 
 ## [0.2.3] - 2019-06-19
