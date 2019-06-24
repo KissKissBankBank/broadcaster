@@ -2,9 +2,18 @@
 
 This project adheres to [Semantic Versioning](http://semver.org)
 
+## [0.3.0] - 2019-06-19
+
+Features:
+ - Add job to create campaign
+ - Add job to create subscription
+
+Breaking changes:
+ - Rename indexes
+
 ## [0.2.3] - 2019-06-19
 
-- Bugfix: fix index migrations
+ - Bugfix: fix index migrations
 
 ## [0.2.2] - 2019-06-19
 

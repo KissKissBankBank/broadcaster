@@ -1,4 +1,5 @@
 require 'rails'
+require 'interactor'
 require 'active_support/core_ext'
 require 'broadcaster/configuration'
 require 'broadcaster/acts_as_subscriber'

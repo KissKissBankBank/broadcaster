@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    broadcaster (0.2.3)
+    broadcaster (0.3.3)
+      interactor-rails
       rails (>= 3.2, < 5.1)
 
 GEM
@@ -86,6 +87,10 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.1)
+    interactor-rails (2.2.0)
+      interactor (~> 3.0)
+      rails (>= 4.2, < 5.3)
     jaro_winkler (1.5.2)
     json (2.2.0)
     loofah (2.2.3)
