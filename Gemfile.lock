@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broadcaster (0.3.3)
+    broadcaster (0.3.0)
       interactor-rails
       rails (>= 3.2, < 5.1)
 
