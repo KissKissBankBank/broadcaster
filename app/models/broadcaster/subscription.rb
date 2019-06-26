@@ -1,5 +1,7 @@
 module Broadcaster
   class Subscription < ActiveRecord::Base
+    include Broadcaster::Identifiable
+
     belongs_to :subscriber, polymorphic: true
     belongs_to :broadcaster_campaign,
                class_name: '::Broadcaster::Campaign',

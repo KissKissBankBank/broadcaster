@@ -82,6 +82,8 @@ GEM
       terminal-table (~> 1.5, >= 1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.8)
+      rails
     graphql (1.7.14)
     highline (2.0.2)
     httparty (0.17.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   factory_bot_rails (~> 5.0.2)
   fashion_police (~> 2.0.1)
   gemfury
+  graphiql-rails
   pg
   pronto (~> 0.10.0)
   pronto-rubocop (~> 0.10.0)

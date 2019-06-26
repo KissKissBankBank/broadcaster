@@ -67,4 +67,7 @@ Gem::Specification.new do |spec|
 
   # Gem hosting
   spec.add_development_dependency 'gemfury'
+
+  # GraphiQL
+  spec.add_development_dependency 'graphiql-rails'
 end

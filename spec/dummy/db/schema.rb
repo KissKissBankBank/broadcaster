@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190619075938) do
+ActiveRecord::Schema.define(version: 20190626105251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190619075938) do
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid"
     t.index ["publisher_id", "publisher_type", "label"], name: "index_broadcaster_campaigns_on_publisher_and_label", unique: true, using: :btree
     t.index ["publisher_type", "publisher_id"], name: "index_broadcaster_campaigns_on_publisher_type_and_publisher_id", using: :btree
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20190619075938) do
     t.boolean  "active",                  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid"
     t.index ["broadcaster_campaign_id"], name: "index_broadcaster_subscriptions_on_broadcaster_campaign_id", using: :btree
     t.index ["subscriber_id", "subscriber_type", "broadcaster_campaign_id"], name: "index_broadcaster_subscriptions_on_subscriber_and_campaign", unique: true, using: :btree
     t.index ["subscriber_type", "subscriber_id"], name: "index_subscriptions_on_subscriber", using: :btree
