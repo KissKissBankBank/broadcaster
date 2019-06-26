@@ -23,17 +23,17 @@ RSpec.describe Types::Broadcaster::CampaignType do
                     broadcaster_subscriptions: [subscription]
     end
 
-    let(:field_name) { 'broadcaster_subscription' }
+    let(:field_name) { 'broadcasterSubscriptions' }
 
-    it 'returns the campaign uuid' do
-      expect(resolved).to eq([broadcaster_subscription])
+    it 'returns the subscription' do
+      expect(resolved).to eq([subscription])
     end
   end
 
   describe '#label' do
     let(:field_name) { 'label' }
 
-    it 'returns the campaign uuid' do
+    it 'returns the label' do
       expect(resolved).to eq('launch')
     end
   end

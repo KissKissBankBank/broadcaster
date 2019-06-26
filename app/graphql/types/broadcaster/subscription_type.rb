@@ -7,9 +7,10 @@ Types::Broadcaster::SubscriptionType = GraphQL::ObjectType.define do
         !types.String,
         'A unique identifier for the broadcaster subscription'
 
-  field :broadcaster_campaign,
+  field :broadcasterCampaign,
         !Types::Broadcaster::CampaignType,
-        'The broadcaster campaign of the subscription'
+        'The broadcaster campaign of the subscription',
+        property: :broadcaster_campaign
 
   field :active, !types.Boolean, 'Is the subscription active?'
 end

@@ -14,5 +14,10 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
+
+  config.define_derived_metadata(file_path: %r{/graphql/types/}) do |metadata|
+    metadata[:type] = :graphql_type
+  end
+
   config.include GraphQLHelpers, type: :graphql_type
 end
