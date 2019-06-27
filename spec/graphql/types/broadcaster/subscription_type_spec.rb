@@ -33,7 +33,7 @@ RSpec.describe Types::Broadcaster::SubscriptionType do
   describe '#active' do
     let(:field_name) { 'active' }
 
-    it 'returns the active' do
+    it 'returns `active`' do
       expect(resolved).to eq(true)
     end
   end
