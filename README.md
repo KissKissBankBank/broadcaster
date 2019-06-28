@@ -1,4 +1,7 @@
 # Broadcaster
+
+![Now Live](https://media.giphy.com/media/fitufgTSd3KXObPIoi/giphy.gif)
+
 ## Motivations and principles
 Broadcaster is an engine keeping track of your user's publications campaigns and subscriptions. Each publication campaign should belong to a publisher, and each subscription should belong to a subscriber.
 
