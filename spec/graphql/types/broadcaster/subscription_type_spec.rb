@@ -16,7 +16,7 @@ RSpec.describe Types::Broadcaster::SubscriptionType do
     end
   end
 
-  describe '#broadcaster_campaign' do
+  describe '#campaign' do
     let!(:campaign) { build_stubbed :campaign }
     let(:subscription) do
       build_stubbed :subscription,

@@ -16,7 +16,21 @@ RSpec.describe Types::Broadcaster::CampaignType do
     end
   end
 
-  describe '#broadcaster_subscriptions' do
+  describe '#subscriptionsCount' do
+    let(:user) { create :user }
+    let(:campaign) do
+      create :campaign,
+             :with_subscriptions
+    end
+
+    let(:field_name) { 'subscriptionsCount' }
+
+    it 'returns the subscription count' do
+      expect(resolved).to eq(1)
+    end
+  end
+
+  describe '#subscriptions' do
     let!(:subscription) { build_stubbed :subscription }
     let(:campaign) do
       build_stubbed :campaign,

@@ -10,4 +10,12 @@ Types::Broadcaster::CampaignType = GraphQL::ObjectType.define do
         property: :broadcaster_subscriptions
 
   field :label, !types.String, 'The campaign label'
+
+  field :subscriptionsCount do
+    type !types.Int
+    description 'The number of subscriptions for this campaign'
+    resolve ->(obj, _args, _ctx) do
+      obj.broadcaster_subscriptions.count
+    end
+  end
 end
