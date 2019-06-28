@@ -3,11 +3,11 @@ Types::UserType = GraphQL::ObjectType.define do
   description 'a user, acting both as a subscriber and publisher'
 
   field :id, types.Int, 'The user id'
-  field :broadcasterCampaigns,
+  field :campaigns,
         types[!Types::Broadcaster::CampaignType],
         'The publication campaigns of the user',
         property: :broadcaster_campaigns
-  field :broadcasterSubscriptions,
+  field :subscriptions,
         types[!Types::Broadcaster::SubscriptionType],
         'The subscriptions of the user',
         property: :broadcaster_subscriptions

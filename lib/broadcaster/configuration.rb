@@ -6,8 +6,8 @@ module Broadcaster
                   :graphql_broadcaster_subscription_name
 
     def initialize
-      @graphql_broadcaster_campaign_name = nil
-      @graphql_broadcaster_subscription_name = nil
+      @graphql_broadcaster_campaign_name = 'Campaign'
+      @graphql_broadcaster_subscription_name = 'Subscription'
     end
   end
 end

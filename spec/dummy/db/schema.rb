@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20190626105251) do
     t.string   "uuid"
     t.index ["publisher_id", "publisher_type", "label"], name: "index_broadcaster_campaigns_on_publisher_and_label", unique: true, using: :btree
     t.index ["publisher_type", "publisher_id"], name: "index_broadcaster_campaigns_on_publisher_type_and_publisher_id", using: :btree
+    t.index ["uuid"], name: "index_broadcaster_campaigns_on_uuid", unique: true, using: :btree
   end
 
   create_table "broadcaster_subscriptions", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20190626105251) do
     t.index ["broadcaster_campaign_id"], name: "index_broadcaster_subscriptions_on_broadcaster_campaign_id", using: :btree
     t.index ["subscriber_id", "subscriber_type", "broadcaster_campaign_id"], name: "index_broadcaster_subscriptions_on_subscriber_and_campaign", unique: true, using: :btree
     t.index ["subscriber_type", "subscriber_id"], name: "index_subscriptions_on_subscriber", using: :btree
+    t.index ["uuid"], name: "index_broadcaster_subscriptions_on_uuid", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

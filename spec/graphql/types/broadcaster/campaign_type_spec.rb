@@ -23,7 +23,7 @@ RSpec.describe Types::Broadcaster::CampaignType do
                     broadcaster_subscriptions: [subscription]
     end
 
-    let(:field_name) { 'broadcasterSubscriptions' }
+    let(:field_name) { 'subscriptions' }
 
     it 'returns the subscription' do
       expect(resolved).to eq([subscription])
