@@ -1,9 +1,11 @@
 require 'rails'
 require 'interactor'
+require 'graphql'
 require 'active_support/core_ext'
 require 'broadcaster/configuration'
 require 'broadcaster/acts_as_subscriber'
 require 'broadcaster/acts_as_publisher'
+require 'broadcaster/identifiable'
 
 ActiveSupport.on_load :active_record do
   ActiveRecord::Base.include Broadcaster::ActsAsPublisher

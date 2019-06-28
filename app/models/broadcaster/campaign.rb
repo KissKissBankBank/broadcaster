@@ -1,5 +1,7 @@
 module Broadcaster
   class Campaign < ActiveRecord::Base
+    include Broadcaster::Identifiable
+
     belongs_to :publisher, polymorphic: true
     has_many :broadcaster_subscriptions,
              dependent: :destroy,

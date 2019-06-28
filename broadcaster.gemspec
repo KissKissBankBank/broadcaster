@@ -31,6 +31,9 @@ Gem::Specification.new do |spec|
   # Encapsulate business logic.
   spec.add_dependency 'interactor-rails'
 
+  # GraphQL API
+  spec.add_dependency 'graphql', '~> 1.7.14'
+
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '~> 2.0.1'
 
@@ -64,4 +67,7 @@ Gem::Specification.new do |spec|
 
   # Gem hosting
   spec.add_development_dependency 'gemfury'
+
+  # GraphiQL
+  spec.add_development_dependency 'graphiql-rails'
 end

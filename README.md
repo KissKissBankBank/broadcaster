@@ -1,4 +1,7 @@
 # Broadcaster
+
+![Now Live](https://media.giphy.com/media/fitufgTSd3KXObPIoi/giphy.gif)
+
 ## Motivations and principles
 Broadcaster is an engine keeping track of your user's publications campaigns and subscriptions. Each publication campaign should belong to a publisher, and each subscription should belong to a subscriber.
 
@@ -84,6 +87,120 @@ Or activate a subscription:
 subscription = Broadcaster::Subscription.find(...)
 
 subscription.activate
+```
+
+## GraphQL API
+
+Broadcaster exposes its `campaigns` and `subscriptions` types in a GraphQL API. You can use them directly in your subscriber or publisher types.
+
+### API Configuration
+
+To set the public names of your `broadcaster_campaigns` and `broadcaster_subscriptions` in the GraphQL API, proceed as follow:
+```rb
+# config/initializers/broadcaster.rb
+Broadcaster.configure do |config|
+  config.graphql_broadcaster_campaign_name = 'MyCustomCampaignName'
+  config.graphql_broadcaster_subscription_name = 'MyCustomSubscriptionName'
+end
+```
+To avoid letting your client know the dependency, default names are `Campaign` and `Subscription`
+
+### API usage
+
+```rb
+# app/graphql/types/subscriber_type.rb
+  field :subscriptions,
+        types[!Types::Broadcaster::SubscriptionType],
+        'The subscriptions of the user',
+        property: :broadcaster_subscriptions
+```
+
+```rb
+# app/graphql/types/publisher_type.rb
+  field :campaigns,
+        types[!Types::Broadcaster::CampaignType],
+        'The publication campaigns of the user',
+        property: :broadcaster_campaigns
+```
+
+### API Development
+
+Broadcaster is equiped with the `GraphiQL` engine, to let you test your queries in your local environment. To access `graphiql`, make sure
+the migrations passed (`rake db:migrate`).
+
+Then go to `spec/dummy`. Run the migrations to have the `user` table inside your dummy app: (`rake db:migrate`).
+
+Then launch your dummy server: `rails s -p 3444`
+
+You can access `graphiql` by visiting: `localhost:3444/graphiql`
+
+Happy coding !
+
+#### Query Sample
+
+```
+# query
+query User($id: Int!) {
+  user(id: $id) {
+    campaigns {
+      label
+      uuid
+      subscriptions {
+        active   
+        uuid
+      }
+      subscriptionsCount
+    }
+    subscriptions {
+      active
+    }
+    id
+  }
+}
+```
+
+```
+# results
+{
+  "data": {
+    "user": {
+      "campaigns": [
+        {
+          "label": "test",
+          "uuid": "094cb361-c894-4cf7-ad24-0df317b72b13",
+          "subscriptions": [
+            {
+              "active": true,
+              "uuid": "5478ce4c-f982-4251-ba5c-bb625dc4fd9d"
+            },
+            {
+              "active": true,
+              "uuid": "bf970c85-0ebb-4cf3-bb86-800591ea2153"
+            }
+          ],
+          "subscriptionsCount": 2
+        },
+        {
+          "label": "post_launch",
+          "uuid": "2786c3af-2b80-4cf8-bff4-af9426d5ad7b",
+          "subscriptions": [
+            {
+              "active": false,
+              "uuid": "7921547f-bf3d-4273-917f-24209b3cdc61"
+            },
+            {
+              "active": true,
+              "uuid": "77860011-e16a-486b-9245-2b9e3db34b1f"
+            }
+          ],
+          "subscriptionsCount": 2
+        }
+      ],
+      "subscriptions": [],
+      "id": 1
+    }
+  }
+}
 ```
 
 ## Development
