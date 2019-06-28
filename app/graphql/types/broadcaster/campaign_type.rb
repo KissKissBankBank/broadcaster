@@ -5,7 +5,7 @@ Types::Broadcaster::CampaignType = GraphQL::ObjectType.define do
 
   field :uuid, !types.String, 'A unique identifier for the broadcaster campaign'
 
-  field :broadcasterSubscriptions,
+  field :subscriptions,
         !types[!Types::Broadcaster::SubscriptionType],
         'The campaign subscriptions',
         property: :broadcaster_subscriptions
