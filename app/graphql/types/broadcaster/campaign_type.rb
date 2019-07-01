@@ -2,7 +2,10 @@ Types::Broadcaster::CampaignType = GraphQL::ObjectType.define do
   name Broadcaster.configuration.graphql_broadcaster_campaign_name
   description 'A broadcaster publication campaign'
 
-  field :uuid, !types.ID, 'A unique identifier for the broadcaster campaign'
+  field :id,
+        !types.ID,
+        'A unique identifier for the broadcaster campaign',
+        property: :uuid
 
   field :subscriptions,
         !types[!Types::Broadcaster::SubscriptionType],

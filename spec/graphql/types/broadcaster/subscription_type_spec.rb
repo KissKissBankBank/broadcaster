@@ -8,8 +8,8 @@ RSpec.describe Types::Broadcaster::SubscriptionType do
   let(:args) {}
   let(:ctx) {}
 
-  describe '#uuid' do
-    let(:field_name) { 'uuid' }
+  describe '#id' do
+    let(:field_name) { 'id' }
 
     it 'returns the subscription uuid' do
       expect(resolved).to eq('uei42')
