@@ -5,10 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org)
 ## [0.4.0] - 2019-06-28
 
 Features:
-- Add unique Uuid to broadcaster campaigns
-- Add unique Uuid to broadcaster subscriptions
-- Expose broadcaster campaign type on a graphQL API
-- Expose broadcaster subscription type on a graphQL API
+- Add unique UUID to broadcaster campaigns
+- Add unique UUID to broadcaster subscriptions
+- Add the GraphQL Campaign type
+- Add the GraphQL Subscription type
 
 ## [0.3.0] - 2019-06-19
 
