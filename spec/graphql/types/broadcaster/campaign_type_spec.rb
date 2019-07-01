@@ -8,8 +8,8 @@ RSpec.describe Types::Broadcaster::CampaignType do
   let(:args) {}
   let(:ctx) {}
 
-  describe '#uuid' do
-    let(:field_name) { 'uuid' }
+  describe '#id' do
+    let(:field_name) { 'id' }
 
     it 'returns the campaign uuid' do
       expect(resolved).to eq('uef42')
