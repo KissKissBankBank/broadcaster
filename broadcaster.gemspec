@@ -7,11 +7,16 @@ Gem::Specification.new do |spec|
   spec.version       = Broadcaster::VERSION
   spec.authors       = ['William Pollet']
   spec.email         = ['william.pollet@kisskissbankbank.com']
-  spec.summary       = 'manage your publisher / subscriber relationshups'
+  spec.summary       = 'manage your publisher / subscriber relationships'
   spec.homepage      = 'https://www.github.com/kisskissbankbank/broadcaster'
   spec.license       = 'MIT'
 
-  spec.metadata['allowed_push_host'] = 'https://gemfury.com/'
+  if spec.respond_to?(:metadata)
+    spec.metadata['allowed_push_host'] = 'https://rubygems.org/'
+  else
+    raise 'RubyGems 2.0 or newer is required to protect against ' \
+      'public gem pushes.'
+  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem
@@ -64,9 +69,6 @@ Gem::Specification.new do |spec|
 
   # Dummy app database
   spec.add_development_dependency 'pg'
-
-  # Gem hosting
-  spec.add_development_dependency 'gemfury'
 
   # GraphiQL
   spec.add_development_dependency 'graphiql-rails'
