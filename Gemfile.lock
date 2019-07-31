@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broadcaster (0.4.0)
+    broadcaster (0.4.1)
       graphql (~> 1.7.14)
       interactor-rails
       rails (>= 3.2, < 5.1)
