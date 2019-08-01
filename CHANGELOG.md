@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org)
 
 ## [0.4.1] - 2019-06-28
 
-- Removes `gemfury` dependency and add `rubygems` as the default host repository
+- Remove `gemfury` dependency and add `rubygems` as the default host repository
 
 ## [0.4.0] - 2019-06-28
 
