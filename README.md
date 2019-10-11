@@ -30,7 +30,7 @@ On a rails application, execute `rake db:migrate` to create the broadcaster tabl
 Then include the following modules to plug `Broadcaster::Subscription` or `Broadcaster::Campaign` to any publisher or subscriber:
 ```rb
 class MyPublisher
-  acts_as_broadcaster_subscriber
+  acts_as_broadcaster_publisher
 
   ...
 end
