@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    broadcaster (0.4.1)
-      graphql (~> 1.7.14)
+    broadcaster (0.4.2)
+      graphql (<= 1.9.19)
       interactor-rails
       rails (>= 3.2, < 5.1)
 
@@ -78,16 +78,16 @@ GEM
       activesupport (>= 4.2.0)
     graphiql-rails (1.4.8)
       rails
-    graphql (1.7.14)
+    graphql (1.9.19)
     httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    interactor (3.1.1)
-    interactor-rails (2.2.0)
+    interactor (3.1.2)
+    interactor-rails (2.2.1)
       interactor (~> 3.0)
-      rails (>= 4.2, < 5.3)
+      rails (>= 4.2)
     jaro_winkler (1.5.2)
     json (2.2.0)
     loofah (2.2.3)

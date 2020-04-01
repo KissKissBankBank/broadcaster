@@ -61,6 +61,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle-test_test
+          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - run: sudo apt-get update

@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'interactor-rails'
 
   # GraphQL API
-  spec.add_dependency 'graphql', '~> 1.7.14'
+  spec.add_dependency 'graphql', '<= 1.9.19'
 
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '~> 2.0.1'
