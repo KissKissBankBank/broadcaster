@@ -17,6 +17,7 @@ jobs:
       - &default_image
         image: circleci/ruby:2.3-node-browsers
         environment: &default_environment
+          BUNDLER_VERSION: 2.0.1
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_DISABLE_VERSION_CHECK: 'true'
