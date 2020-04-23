@@ -222,19 +222,19 @@ PLATFORMS
 
 DEPENDENCIES
   broadcaster!
-  factory_bot_rails (~> 5.0.2)
-  fashion_police (~> 2.0.1)
+  factory_bot_rails (>= 5.0.2)
+  fashion_police (>= 2.0.1)
   graphiql-rails
   pg
-  pronto (~> 0.10.0)
-  pronto-rubocop (~> 0.10.0)
+  pronto
+  pronto-rubocop
   pry
   pry-byebug
   rspec-rails
-  rubocop (~> 0.60)
-  safe_pusher (~> 0.2.2)
-  simplecov (~> 0.16.1)
+  rubocop (>= 0.60)
+  safe_pusher
+  simplecov
   test-unit
 
 BUNDLED WITH
-   1.17.1
+   1.17.2
