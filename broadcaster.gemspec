@@ -40,21 +40,21 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'graphql', '<= 1.9.19'
 
   # Code quality checker
-  spec.add_development_dependency 'fashion_police', '~> 2.0.1'
+  spec.add_development_dependency 'fashion_police', '>= 2.0.1'
 
   # linter
-  spec.add_development_dependency 'rubocop', '~> 0.60'
+  spec.add_development_dependency 'rubocop', '>= 0.60'
 
   # coverage
-  spec.add_development_dependency 'simplecov', '~> 0.16.1'
+  spec.add_development_dependency 'simplecov'
 
   # Code review automation
-  spec.add_development_dependency 'pronto', '~> 0.10.0'
+  spec.add_development_dependency 'pronto'
 
   # Rubocop Adapter for pronto
-  spec.add_development_dependency 'pronto-rubocop', '~> 0.10.0'
+  spec.add_development_dependency 'pronto-rubocop'
 
-  spec.add_development_dependency 'safe_pusher', '~> 0.2.2'
+  spec.add_development_dependency 'safe_pusher'
 
   # Debugger
   spec.add_development_dependency 'pry'
@@ -65,7 +65,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'test-unit' # required for ruby > 2.1
 
   # Spec factories
-  spec.add_development_dependency 'factory_bot_rails', '~> 5.0.2'
+  spec.add_development_dependency 'factory_bot_rails', '>= 5.0.2'
 
   # Dummy app database
   spec.add_development_dependency 'pg'
