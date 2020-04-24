@@ -2,6 +2,23 @@
 
 This project adheres to [Semantic Versioning](http://semver.org)
 
+## [0.4.3] - 2020-04-24
+
+Packages:
+ - Upgrading Fashion police
+ - Upgrading RuboCop
+ - Upgrading Simplecov
+ - Upgrading Pronto
+ - Upgrading Pronto-rubocop
+ - Upgrading Safe_pusher
+ - Upgrading FactoryBot-rails
+
+## [0.4.2] - 2020-04-01
+
+Packages:
+ - Upgrading graphql dependency
+
+
 ## [0.4.1] - 2019-06-28
 
 - Remove `gemfury` dependency and add `rubygems` as the default host repository
