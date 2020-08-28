@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](http://semver.org)
 
+## Unreleased
+
+Fixed:
+
+- Migrations export to host application
+
 ## [0.4.3] - 2020-04-24
 
 Packages:
