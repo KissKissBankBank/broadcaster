@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/KissKissBankBank/broadcaster
   docker:
-    - image: circleci/ruby:2.3-node-browsers
+    - image: circleci/ruby:2.4-node-browsers
       environment:
         RAILS_ENV: test
         RACK_ENV: test
@@ -15,7 +15,7 @@ jobs:
   build:
     docker:
       - &default_image
-        image: circleci/ruby:2.3-node-browsers
+        image: circleci/ruby:2.4-node-browsers
         environment: &default_environment
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -48,7 +48,7 @@ jobs:
   test_rails:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.3
+      - image: circleci/ruby:2.4
         environment:
           RAILS_ENV: test
           RACK_ENV: test
