@@ -42,6 +42,8 @@ Gem::Specification.new do |spec|
   # Miscellaneous utility code
   spec.add_dependency 'tote_bag', '>= 1.4'
 
+  spec.add_development_dependency 'rails', '~> 4.0'
+
   # coverage
   spec.add_development_dependency 'simplecov'
 
