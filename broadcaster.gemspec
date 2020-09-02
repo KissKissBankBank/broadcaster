@@ -60,8 +60,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'safe_pusher'
 
   # Debugger
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'pry-byebug'
+  s.add_development_dependency 'pry', '~> 0.13.0'
+  s.add_development_dependency 'pry-byebug', '~> 3.9.0'
 
   # Specs
   spec.add_development_dependency 'rspec-rails'
