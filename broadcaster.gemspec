@@ -51,16 +51,16 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fashion_police', '>= 2.4.3'
 
   # Code review automation
-  spec.add_development_dependency 'pronto', '~> 0.10.0'
+  spec.add_development_dependency 'pronto'
 
   # Rubocop Adapter for pronto
-  spec.add_development_dependency 'pronto-rubocop', '~> 0.10.0'
+  spec.add_development_dependency 'pronto-rubocop'
 
   spec.add_development_dependency 'safe_pusher'
 
   # Debugger
-  spec.add_development_dependency 'pry', '~> 0.13.0'
-  spec.add_development_dependency 'pry-byebug', '~> 3.9.0'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry-byebug'
 
   # Specs
   spec.add_development_dependency 'rspec-rails'
@@ -70,7 +70,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot_rails', '>= 5.0.2'
 
   # Dummy app database
-  spec.add_development_dependency 'pg', '~> 0.21.0'
+  spec.add_development_dependency 'pg'
 
   # GraphiQL
   spec.add_development_dependency 'graphiql-rails'
