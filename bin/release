@@ -8,8 +8,8 @@ require 'telex'
 
 error_messages = []
 
-not_master? = (`git rev-parse --abbrev-ref HEAD`.strip != 'master')
-error_messages << 'Haha, you\'re not on master. Silly.' if not_master?
+not_master = (`git rev-parse --abbrev-ref HEAD`.strip != 'master')
+error_messages << 'Haha, you\'re not on master. Silly.' if not_master
 
 unpushed_commits = `git log @{u}..`
 error_messages << 'Unpushed commits are not allowed!' if unpushed_commits.any?
