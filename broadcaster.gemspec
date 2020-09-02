@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # This is a Rails engine, so, yeah
-  spec.add_dependency 'rails', '>= 3.2', '< 5.1'
+  spec.add_dependency 'rails', '>= 4.0.11', '< 5.1'
 
   # Encapsulate business logic.
   spec.add_dependency 'interactor-rails'
