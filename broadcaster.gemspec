@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   # This is a Rails engine, so, yeah
   spec.add_dependency 'rails', '>= 4.0.11', '< 5.1'
+  spec.add_development_dependency 'rails', '~> 4.0'
 
   # Encapsulate business logic.
   spec.add_dependency 'interactor-rails'
@@ -42,7 +43,6 @@ Gem::Specification.new do |spec|
   # Miscellaneous utility code
   spec.add_dependency 'tote_bag', '>= 1.4'
 
-  spec.add_development_dependency 'rails', '~> 4.0'
 
   # coverage
   spec.add_development_dependency 'simplecov'
