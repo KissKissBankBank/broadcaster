@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
 
   # This is a Rails engine, so, yeah
   spec.add_dependency 'rails', '>= 4.0.11', '< 5.1'
-  spec.add_development_dependency 'rails', '~> 4.0'
+  spec.add_development_dependency 'rails', '~> 4.2.11'
 
   # Encapsulate business logic.
   spec.add_dependency 'interactor-rails'
