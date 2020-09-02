@@ -46,13 +46,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
 
   # Code quality checker
-  s.add_development_dependency 'fashion_police', '>= 2.4.3'
+  spec.add_development_dependency 'fashion_police', '>= 2.4.3'
 
   # Code review automation
-  s.add_development_dependency 'pronto', '~> 0.10.0'
+  spec.add_development_dependency 'pronto', '~> 0.10.0'
 
   # Rubocop Adapter for pronto
-  s.add_development_dependency 'pronto-rubocop', '~> 0.10.0'
+  spec.add_development_dependency 'pronto-rubocop', '~> 0.10.0'
 
   spec.add_development_dependency 'safe_pusher'
 
