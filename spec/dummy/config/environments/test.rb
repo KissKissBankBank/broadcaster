@@ -10,5 +10,10 @@ Dummy::Application.configure do
   config.active_support.deprecation = :stderr
   config.active_support.test_order  = :random
 
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=3600',
+  }
+
   config.action_dispatch.show_exceptions = false
 end
