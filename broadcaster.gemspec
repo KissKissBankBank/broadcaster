@@ -42,20 +42,17 @@ Gem::Specification.new do |spec|
   # Miscellaneous utility code
   spec.add_dependency 'tote_bag', '>= 1.4'
 
-  # Code quality checker
-  spec.add_development_dependency 'fashion_police', '>= 2.0.1'
-
-  # linter
-  spec.add_development_dependency 'rubocop', '>= 0.60'
-
   # coverage
   spec.add_development_dependency 'simplecov'
 
+  # Code quality checker
+  s.add_development_dependency 'fashion_police', '>= 2.4.3'
+
   # Code review automation
-  spec.add_development_dependency 'pronto'
+  s.add_development_dependency 'pronto', '~> 0.10.0'
 
   # Rubocop Adapter for pronto
-  spec.add_development_dependency 'pronto-rubocop'
+  s.add_development_dependency 'pronto-rubocop', '~> 0.10.0'
 
   spec.add_development_dependency 'safe_pusher'
 
