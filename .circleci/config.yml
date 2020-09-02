@@ -20,7 +20,6 @@ jobs:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_DISABLE_VERSION_CHECK: 'true'
-          BUNDLE_DEPLOYMENT: 'true'
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
           RACK_ENV: test
