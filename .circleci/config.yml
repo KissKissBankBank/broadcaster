@@ -1,30 +1,53 @@
-version: 2.1
+version: 2
 
-defaults: &defaults
-  working_directory: ~/KissKissBankBank/broadcaster
-  docker:
-    - image: circleci/ruby:2.6-node-browsers
-      environment:
-        RAILS_ENV: test
-        RACK_ENV: test
-        BUNDLE_JOBS: 3
-        BUNDLE_RETRY: 3
-        BUNDLE_PATH: vendor/bundle
+workflows:
+  version: 2
+
+  test_and_review:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: master
+      - test_rails:
+          requires:
+            - build
+      - review:
+          requires:
+            - build
+
+  test:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - test_rails:
+          requires:
+            - build
 
 jobs:
   build:
+    working_directory: ~/KissKissBankBank/broadcaster
     docker:
       - &default_image
         image: circleci/ruby:2.6-node-browsers
-        environment: &default_environment
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_DISABLE_VERSION_CHECK: 'true'
-          BUNDLE_PATH: vendor/bundle
+        environment:
           RAILS_ENV: test
           RACK_ENV: test
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - &postgresql_image
+        image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: password
+
     steps:
       - checkout
+      - attach_workspace:
+          at: .
       - restore_cache:
           keys:
             - broadcaster-bundle-{{ checksum "Gemfile" }}-{{ checksum "broadcaster.gemspec" }}
@@ -32,68 +55,35 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt install -y cmake libssh-dev
       - run: sudo apt install postgresql-client
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
+      - run: bundle check || bundle install
       - save_cache:
           key: broadcaster-bundle-{{ checksum "Gemfile" }}-{{ checksum "broadcaster.gemspec" }}
           paths:
             - vendor/bundle
-            - ~/.bundle
       - persist_to_workspace:
           root: .
           paths:
             - vendor/bundle
 
   test_rails:
-    <<: *defaults
     docker:
-      - image: circleci/ruby:2.6
-        environment:
-          RAILS_ENV: test
-          RACK_ENV: test
-          BUNDLE_PATH: vendor/bundle
-          PGHOST: 127.0.0.1
-          PGUSER: root
-          DISABLE_DATABASE_ENVIRONMENT_CHECK: '1'
-      - image: circleci/postgres:9.6
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle-test_test
-          POSTGRES_HOST_AUTH_METHOD: trust
-    steps:
-      - checkout
-      - run: sudo apt-get update
-      - run: sudo apt install postgresql-client
-      - attach_workspace:
-          at: .
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
-      - run:
-          name: DB Setup
-          command: bundle exec rake app:db:create app:db:migrate
-      - run: mkdir -p ~/rspec
-      - run:
-          name: Rspec
-          command: bundle exec rspec --format progress $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-  pronto:
-    <<: *defaults
+      - *default_image
+      - *postgresql_image
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          command: bin/github-pr-review
+      - run: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run: bundle exec rake app:db:create app:db:migrate
+      - run: bin/circle/test-rails
+      - store_test_results:
+          path: ~/rspec
 
-workflows:
-  version: 2.1
-  test:
-    jobs:
-      - build
-      - test_rails:
-          requires:
-            - build
-      - pronto:
-          requires:
-            - build
+  review:
+    docker:
+      - *default_image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: bin/circle/review
