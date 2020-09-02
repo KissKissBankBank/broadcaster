@@ -28,7 +28,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - broadcaster-bundle-{{ checksum "Gemfile.lock" }}
+            - broadcaster-bundle-{{ checksum "Gemfile" }}-{{ checksum "broadcaster.gemspec" }}
             - broadcaster-bundle-
       - run: sudo apt-get update
       - run: sudo apt install -y cmake libssh-dev
@@ -37,7 +37,7 @@ jobs:
           name: Bundle Install
           command: bundle check || bundle install
       - save_cache:
-          key: broadcaster-bundle-{{ checksum "Gemfile.lock" }}
+          key: broadcaster-bundle-{{ checksum "Gemfile" }}-{{ checksum "broadcaster.gemspec" }}
           paths:
             - vendor/bundle
             - ~/.bundle
