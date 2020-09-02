@@ -40,15 +40,15 @@ Gem::Specification.new do |spec|
   # GraphQL API
   spec.add_dependency 'graphql', '<= 1.9.19'
 
+  # Code quality checker
+  spec.add_development_dependency 'fashion_police', '>= 2.0.1'
+
   # Miscellaneous utility code
   spec.add_dependency 'tote_bag', '>= 1.4'
 
 
   # coverage
   spec.add_development_dependency 'simplecov'
-
-  # Code quality checker
-  spec.add_development_dependency 'fashion_police', '>= 2.4.3'
 
   # Code review automation
   spec.add_development_dependency 'pronto'
