@@ -70,7 +70,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot_rails', '>= 5.0.2'
 
   # Dummy app database
-  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'pg', '~> 0.21.0'
 
   # GraphiQL
   spec.add_development_dependency 'graphiql-rails'
