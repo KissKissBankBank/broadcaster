@@ -10,13 +10,13 @@ error_messages = []
 
 current_branch = `git rev-parse --abbrev-ref HEAD`
 
-unless current_branch.strip == 'master'
+if current_branch.strip != 'master'
   error_messages << 'Haha, you\'re not on master. Silly.'
 end
 
 unpushed_commits = `git log @{u}..`
 
-unless unpushed_commits.empty?
+if unpushed_commits.any?
   error_messages << 'Unpushed commits are not allowed!'
 end
 
