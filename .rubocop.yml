@@ -15,6 +15,7 @@ RSpec/FilePath:
 Layout/LineLength:
   Exclude:
     - spec/dummy/db/schema.rb
+    - bin/*
 
 Metrics/MethodLength:
   Exclude:
