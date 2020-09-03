@@ -61,6 +61,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-byebug'
 
+  # Format specs output so the CI can balance spec and improve parallelism
   spec.add_development_dependency 'rspec_junit_formatter'
 
   # Specs
