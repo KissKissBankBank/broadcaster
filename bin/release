@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/broadcaster/version.rb'
+require 'fileutils'
+require 'telex'
+
+###### Check if everything is OK before launching release ######
+
+error_messages = []
+
+not_master = (`git rev-parse --abbrev-ref HEAD`.strip != 'master')
+error_messages << 'Haha, you\'re not on master. Silly.' if not_master
+
+unpushed_commits = `git log @{u}..`
+error_messages << 'Unpushed commits are not allowed!' if unpushed_commits.any?
+
+git_diff = `git diff --name-only`
+files_changed = git_diff.split("\n")
+
+unless files_changed.include?('CHANGELOG.md') &&
+       files_changed.include?('lib/broadcaster/version.rb')
+  error_messages << 'You must update version.rb and CHANGELOG.md!'
+end
+
+required_vars = %w[TELEX_TOKEN TELEX_HOST GEMFURY_USER GEMFURY_API_TOKEN]
+missing_vars = required_vars.reject { |var| ENV[var] }
+
+error_messages << "Missing environment variables: #{missing_vars.join(', ')}" if missing_vars.any?
+
+if error_messages.any?
+  puts 'There are some errors preventing release (O_O;)'
+  puts
+
+  error_messages.each do |error_message|
+    puts "* #{error_message}"
+  end
+  puts
+
+  puts 'Fore more information, see ' \
+       'https://github.com/KissKissBankBank/kisskissbankbank/' \
+       'wiki/Release-de-gem'
+
+  exit(1)
+end
+
+# ###### Launch release ######
+
+version = Broadcaster::VERSION
+
+puts '##### Push CHANGELOG.md and version.rb ᕕ(⌐■_■)ᕗ ♪♬'
+
+system 'git add lib/broadcaster/version.rb CHANGELOG.md'
+system "git commit -m 'v#{version}'"
+system 'git push'
+
+puts 'Done!'
+puts
+
+puts '##### Push new tag (つ•̀ᴥ•́)つ*:･ﾟ✧'
+
+system "git tag v#{version} -am 'v#{version}'"
+system 'git push --tags'
+
+puts 'Done!'
+puts
+
+puts '##### Build and upload gem to Gemfury ᕙ(⇀‸↼‶)ᕗ'
+
+gemfury_url =
+  "https://#{ENV['GEMFURY_API_TOKEN']}@push.fury.io/#{ENV['GEMFURY_USER']}/"
+
+system 'gem build broadcaster.gemspec'
+system "curl -F package=@broadcaster-#{version}.gem #{gemfury_url}"
+system "rm -rf broadcaster-#{version}.gem"
+
+puts 'Done!'
+puts
+
+puts '##### Post Slack message on #core-release (　ﾟДﾟ)＜!!'
+
+release_url =
+  "https://github.com/KissKissBankBank/broadcaster/releases/tag/v#{version}"
+
+telex_client =
+  Telex::Client.new(host: ENV['TELEX_HOST'], token: ENV['TELEX_TOKEN'])
+
+telex_message =
+  Telex::Message.create('Release notice') do |message|
+    message.block('New release :rocket:') do |block|
+      block.text "[Broadcaster] <#{release_url}|v#{version}> :mega:"
+    end
+  end
+
+telex_client.post('notifications:core-release', telex_message)
+
+puts 'Done!'
