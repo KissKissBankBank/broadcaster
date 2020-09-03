@@ -11,6 +11,7 @@ Fixed:
 Development tools:
 
 - Add release script
+- Update CI configuration
 
 ## [0.4.3] - 2020-04-24
 
