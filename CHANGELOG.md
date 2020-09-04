@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org)
 
 ## Unreleased
 
+Fixed:
+
+- Migrations export to host application
+
 Development tools:
 
 - Add release script

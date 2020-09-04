@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   # This is a Rails engine, so, yeah
   spec.add_dependency 'rails', '>= 3.2', '< 5.1'
+  spec.add_development_dependency 'rails', '~> 4.2'
 
   # Encapsulate business logic.
   spec.add_dependency 'interactor-rails'
@@ -42,8 +43,8 @@ Gem::Specification.new do |spec|
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '>= 2.0.1'
 
-  # linter
-  spec.add_development_dependency 'rubocop', '>= 0.60'
+  # Miscellaneous utility code
+  spec.add_dependency 'tote_bag', '>= 1.4'
 
   # coverage
   spec.add_development_dependency 'simplecov'
@@ -71,7 +72,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot_rails', '>= 5.0.2'
 
   # Dummy app database
-  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'pg', '~> 0.15'
 
   # GraphiQL
   spec.add_development_dependency 'graphiql-rails'
