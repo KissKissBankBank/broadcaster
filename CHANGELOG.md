@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org)
 
 ## Unreleased
 
+## [0.4.4] - 2020-09-04
+
 Fixed:
 
 - Migrations export to host application
