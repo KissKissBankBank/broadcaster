@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+files_list=$(circleci tests glob \
+  "spec/**/*_spec.rb" \
+  circleci tests split | \
+  xargs)
+
+mkdir -p ~/rspec
+
+bundle exec rspec \
+  --format progress \
+  --format RspecJunitFormatter \
+  --out ~/rspec/rspec.xml \
+  $files_list
