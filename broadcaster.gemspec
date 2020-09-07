@@ -43,9 +43,6 @@ Gem::Specification.new do |spec|
   # Code quality checker
   spec.add_development_dependency 'fashion_police', '>= 2.0.1'
 
-  # Miscellaneous utility code
-  spec.add_dependency 'tote_bag', '>= 1.4'
-
   # coverage
   spec.add_development_dependency 'simplecov'
 
