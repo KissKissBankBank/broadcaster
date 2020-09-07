@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org)
 
 ## Unreleased
 
+Dependencies:
+
+- Update tote_bag requirement from >= 1.4 to >= 1.4.1
+
 ## [0.4.4] - 2020-09-04
 
 Fixed:
