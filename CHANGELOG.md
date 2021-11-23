@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org)
 ## Unreleased
 
 ## [0.4.5] - 2020-09-07
+Dependencies: 
+- Remove tote_bag dependency
+- Upgrade Graphql dependency
+
+## [0.4.5] - 2020-09-07
 
 Dependencies:
 
